@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;400,600;700;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./resources/ol.css">
+        <link rel="stylesheet" href="resources/fontawesome-all.min.css">
+        <link rel="stylesheet" type="text/css" href="resources/horsey.min.css">
+        <link rel="stylesheet" type="text/css" href="resources/ol-search-layer.min.css">
+        <link href="resources/photon-geocoder-autocomplete.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./resources/ol-layerswitcher.css">
+        <link rel="stylesheet" href="./resources/qgis2web.css">
+        <style>
+        html, body {
+            background-color: #ffffff;
+        }
+        .ol-control > * {
+            background-color: #f8f8f8!important;
+            color: #444444!important;
+            border-radius: 2px;
+            font-family: 'Lato', sans-serif !important;
+        }
+        .ol-attribution a, .gcd-gl-input::placeholder, .search-layer-input-search::placeholder {
+            color: #444444!important;
+        }
+        .search-layer-input-search {
+            background-color: #f8f8f8!important;
+        }
+        .ol-control > *:focus, .ol-control >*:hover {
+            background-color: rgba(248, 248, 248, 0.7)!important;
+        } 
+        .ol-control {
+            background-color: rgba(255,255,255,.4) !important;
+            padding: 2px !important;
+        } 
+        </style>
+
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        
+        /* Pone en negrita el título principal de cada grupo en la leyenda */
+        .layer-group-title {
+        font-weight: bold !important;
+        }
+
+       /* Si qgis2web no asignó esa clase, puedes forzar el estilo a las etiquetas de la leyenda */
+       .ol-layerswitcher label {
+       font-weight: bold;
+       font-size: 11px; /* Opcional: ajustar tamaño */
+       }
+       /* Layout general: header arriba + mapa abajo sin superposición */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  font-family: "Lato", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Header prolijo, con sombra suave */
+#header {
+  flex: 0 0 auto;
+  background: #ffffff;
+  padding: 16px 24px 10px 24px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  z-index: 10;
+}
+
+/* Títulos */
+.titulo-principal {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: #1a1a1a;
+  letter-spacing: 0.4px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+
+.titulo-secundario {
+  font-size: 15px;
+  font-weight: 400;        /* texto normal */
+  line-height: 1.4;       /* más aire entre líneas */
+  margin: 6px 0 14px 0;
+  color: #555;
+}
+
+.descripcion {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #444;
+  max-width: 1100px;
+  margin: 0;
+}
+
+/* Separador doble: una gruesa + una fina */
+.separador-doble {
+  position: relative;
+  margin-top: 4px;
+  height: 8px;
+}
+
+.separador-doble::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;               /* gruesa */
+  background: #2c3e50;
+  border-radius: 1px;
+}
+
+.separador-doble::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;             /* fina */
+  background: #2c3e50;
+}
+
+/* Mapa: que ocupe todo el resto de la pantalla */
+#map {
+  flex: 1 1 auto;
+  min-height: 0;    /* importante para que flex calcule bien */
+  width: 100%;
+}
+/* Título para el panel de capas de OpenLayers */
+.layer-switcher .panel:before {
+    content: "REFERENCIAS";
+    display: block;
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    padding: 8px 5px;
+    color: #ffffff;
+    background-color: #2c3e50; /* Un azul oscuro institucional */
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 4px 4px 0 0;
+}
+
+/* Ajuste para que el panel no corte el título */
+.layer-switcher .panel {
+    padding-top: 0 !important;
+}
+/* Pone el título del panel de capas en negrita */
+.ol-layerswitcher h2 {
+    font-weight: 700 !important;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    margin-bottom: 10px;
+    color: #333;
+}
+/* Pone los nombres de los grupos de capas en negrita */
+.ol-layerswitcher .group label {
+    font-weight: 700 !important;
+}
+    #integrantes {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    color: #000;
+    line-height: 1.1; /* Muy poca separación entre líneas */
+}
+#integrantes strong {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 3px; /* Poco espacio debajo del título */
+}
+        </style>
+        <title>GRD-Volcan</title>
+    </head>
+    <body>
+         <div id="header">
+    <h1 class="titulo-principal">
+    DATOS PARA LA GESTION DE RIESGOS DE DESASTRES. VOLCAN. JUJUY (RA)
+   </h1>
+   <h2 class="titulo-secundario">
+ El <strong><em>web-mapping </em></strong> fue construido como apoyo a un sistema de alerta temprana (SAT) a partir del <strong>evento hidrometeorológico extremo </strong>ocurrido el 10-01-2017 en la loc. de Volcán. Se identifican diferentes zonas según el impacto ocasionado por el aluvión, tipos de peligros, elementos e infraestructuras y obras posteriores al año 2017. Se utilizaron datos abiertos <strong>WFS</strong> de <strong>IDEJuy</strong> (Ministerio de Planificación Estratégica y Modernización de Jujuy), <strong>SIGAM - SEGEMAR </strong>(Sistema de Información Geol. Ambiental Minero del Servicio Geol. Minero Argentino), <strong>IGN</strong> (Inst. Geográfico Nacional), <strong>OSM</strong> (OpenStreetMap) y capas de elaboración propia.
+ <h3 class="descripcion"></h3>
+<div class="separador-doble"></div>
+</div>
+        <div id="map">
+            <div id="popup" class="ol-popup">
+                <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+                <div id="popup-content"></div>
+            </div>
+        </div>
+        <script src="resources/qgis2web_expressions.js"></script>
+<script src="resources/proj4.js"></script>
+        <script>proj4.defs('EPSG:3857','+proj=merc +a=6378137 +b=6378137 +lat_ts=0 +lon_0=0 +x_0=0 +y_0=0 +k=1 +units=m +nadgrids=@null +wktext +no_defs');</script>
+        <script src="./resources/functions.js"></script>
+        <script src="./resources/ol.js"></script>
+        <script src="./resources/ol-layerswitcher.js"></script>
+        <script src="resources/photon-geocoder-autocomplete.min.js"></script>
+        <script src="layers/IdejuyAPUnesco_2.js"></script><script src="layers/Subcuenca_3.js"></script><script src="layers/Aluvion2017_4.js"></script><script src="layers/Depositosdetriticos_5.js"></script><script src="layers/SigamFallasinversas_6.js"></script><script src="layers/Red_hidrografica_7.js"></script><script src="layers/LagunaEsmeralda_8.js"></script><script src="layers/SigamTiposdePeligros_9.js"></script><script src="layers/ParcelasImpactoevento2017_10.js"></script><script src="layers/Equipamientourbano_11.js"></script><script src="layers/IdejuyCentrodeSalud_12.js"></script><script src="layers/IdejuyEstEducativos_13.js"></script><script src="layers/Obrasdemitigacin_14.js"></script><script src="layers/Ign_vialnacional_15.js"></script><script src="layers/IdejuyLineaMT_16.js"></script><script src="layers/Lineaferrea_17.js"></script><script src="layers/IdejuyTrazaFOptica_18.js"></script><script src="layers/IdejuyPPotabilizadora_19.js"></script><script src="layers/IdejuyEstaciones_electricas_20.js"></script><script src="layers/IdejuyPDepuradora_21.js"></script>
+        <script src="styles/IdejuyAPUnesco_2_style.js"></script><script src="styles/Subcuenca_3_style.js"></script><script src="styles/Aluvion2017_4_style.js"></script><script src="styles/Depositosdetriticos_5_style.js"></script><script src="styles/SigamFallasinversas_6_style.js"></script><script src="styles/Red_hidrografica_7_style.js"></script><script src="styles/LagunaEsmeralda_8_style.js"></script><script src="styles/SigamTiposdePeligros_9_style.js"></script><script src="styles/ParcelasImpactoevento2017_10_style.js"></script><script src="styles/Equipamientourbano_11_style.js"></script><script src="styles/IdejuyCentrodeSalud_12_style.js"></script><script src="styles/IdejuyEstEducativos_13_style.js"></script><script src="styles/Obrasdemitigacin_14_style.js"></script><script src="styles/Ign_vialnacional_15_style.js"></script><script src="styles/IdejuyLineaMT_16_style.js"></script><script src="styles/Lineaferrea_17_style.js"></script><script src="styles/IdejuyTrazaFOptica_18_style.js"></script><script src="styles/IdejuyPPotabilizadora_19_style.js"></script><script src="styles/IdejuyEstaciones_electricas_20_style.js"></script><script src="styles/IdejuyPDepuradora_21_style.js"></script>
+        <script src="./layers/layers.js" type="text/javascript"></script> 
+        <script src="./resources/Autolinker.min.js"></script>
+        <script src="./resources/qgis2web.js"></script>    
+        
+           <script>
+    // Esperamos un segundo a que el mapa cargue y lo centramos en Volcán
+    window.onload = function() {
+        if (typeof map !== 'undefined') {
+            var volcanCenter = ol.proj.fromLonLat([-65.463, -23.916]);
+            map.getView().setCenter(volcanCenter);
+            map.getView().setZoom(15);
+        }
+    };
+    var view = new ol.View({
+    zoom: 14,
+    maxZoom: 20,
+    minZoom: 12, // Esto evita que el usuario se aleje demasiado de Volcán
+    constrainResolution: true, // ¡Clave! Hace que el zoom sea por pasos fijos
+    smoothExtentConstraint: false,
+    multiWorld: false
+});
+</script>  
+    </body>
+</html>
