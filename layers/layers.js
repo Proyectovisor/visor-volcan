@@ -182,15 +182,19 @@ var lyr_Equipamientourbano_11 = new ol.layer.Vector({
                 popuplayertitle: 'OSM Equipamiento urbano',
                 interactive: true,
     title: 'OSM Equipamiento urbano<br />\
+    <i>Servicios e institucional</i><br />\
     <img src="styles/legend/Equipamientourbano_11_0.png" />   Agua Potable S.A.<br />\
-    <img src="styles/legend/Equipamientourbano_11_1.png" />   Biblioteca 3 de Abril<br />\
-    <img src="styles/legend/Equipamientourbano_11_2.png" />   Campo Deportivo<br />\
     <img src="styles/legend/Equipamientourbano_11_3.png" />   Empresa EJESA<br />\
-    <img src="styles/legend/Equipamientourbano_11_4.png" />   Espacio Verde<br />\
+    <img src="styles/legend/Equipamientourbano_11_8.png" />   Salón Municipal<br />\
+    <i>Cultura y culto</i><br />\
+    <img src="styles/legend/Equipamientourbano_11_1.png" />   Biblioteca 3 de Abril<br />\
     <img src="styles/legend/Equipamientourbano_11_5.png" />   Iglesia Ntra. Sra. del Valle<br />\
     <img src="styles/legend/Equipamientourbano_11_6.png" />   Playón Comparsa<br />\
+    <i>Espacios públicos y deporte</i><br />\
     <img src="styles/legend/Equipamientourbano_11_7.png" />   Plaza 3 de Abril<br />\
-    <img src="styles/legend/Equipamientourbano_11_8.png" />   Salón Municipal<br />\
+    <img src="styles/legend/Equipamientourbano_11_4.png" />   Espacio Verde<br />\
+    <img src="styles/legend/Equipamientourbano_11_2.png" />   Campo Deportivo<br />\
+    <i>Transporte</i><br />\
     <img src="styles/legend/Equipamientourbano_11_9.png" />   Tren Turistico<br />' });
 var format_IdejuyCentrodeSalud_12 = new ol.format.GeoJSON();
 var features_IdejuyCentrodeSalud_12 = format_IdejuyCentrodeSalud_12.readFeatures(json_IdejuyCentrodeSalud_12, 
