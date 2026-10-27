@@ -1,89 +1,52 @@
 var size = 0;
 var placement = 'point';
+// Equipamiento urbano: simbolos puntuales (forma = tipo de uso, color = equipamiento).
+// Se evita la escala verde-rojo para no confundir con zonas de impacto o peligro.
+var simbolos_Equipamientourbano_11 = {
+    'Agua Potable S.A.':            {forma: 'cuadrado',  color: '#0077BB'},
+    'Empresa EJESA':                {forma: 'cuadrado',  color: '#33BBEE'},
+    'Salón Municipal':              {forma: 'cuadrado',  color: '#555555'},
+    'Biblioteca 3 de Abril':        {forma: 'triangulo', color: '#AA3377'},
+    'Iglesia Ntra. Sra. del Valle': {forma: 'triangulo', color: '#EE3377'},
+    'Playón Comparsa':              {forma: 'triangulo', color: '#7B2FBF'},
+    'Plaza 3 de Abril':             {forma: 'rombo',     color: '#009988'},
+    'Espacio Verde':                {forma: 'rombo',     color: '#88CCEE'},
+    'Campo Deportivo':              {forma: 'rombo',     color: '#332288'},
+    'Tren Turistico':               {forma: 'estrella',  color: '#222222'}
+};
+function marcador_Equipamientourbano_11(forma, color) {
+    var fill = new ol.style.Fill({color: color});
+    var stroke = new ol.style.Stroke({color: '#FFFFFF', width: 2});
+    if (forma === 'cuadrado')  return new ol.style.RegularShape({fill: fill, stroke: stroke, points: 4, radius: 9, angle: Math.PI / 4});
+    if (forma === 'triangulo') return new ol.style.RegularShape({fill: fill, stroke: stroke, points: 3, radius: 10, angle: 0});
+    if (forma === 'rombo')     return new ol.style.RegularShape({fill: fill, stroke: stroke, points: 4, radius: 10, angle: 0});
+    return new ol.style.RegularShape({fill: fill, stroke: stroke, points: 5, radius: 11, radius2: 5, angle: 0}); // estrella
+}
 function categories_Equipamientourbano_11(feature, value, size, resolution, labelText,
                        labelFont, labelFill, bufferColor, bufferWidth,
                        placement) {
-                var valueStr = (value !== null && value !== undefined) ? value.toString() : 'default';
-                switch(valueStr) {case 'Agua Potable S.A.':
-                    return [ new ol.style.Style({
-        stroke: new ol.style.Stroke({color: 'rgba(35,35,35,1.0)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 0.988}),fill: new ol.style.Fill({color: 'rgba(215,25,28,1.0)'}),
-        text: createTextStyle(feature, resolution, labelText, labelFont,
-                              labelFill, placement, bufferColor,
-                              bufferWidth)
-    })];
-                    break;
-case 'Biblioteca 3 de Abril':
-                    return [ new ol.style.Style({
-        stroke: new ol.style.Stroke({color: 'rgba(35,35,35,1.0)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 0.988}),fill: new ol.style.Fill({color: 'rgba(230,85,56,1.0)'}),
-        text: createTextStyle(feature, resolution, labelText, labelFont,
-                              labelFill, placement, bufferColor,
-                              bufferWidth)
-    })];
-                    break;
-case 'Campo Deportivo':
-                    return [ new ol.style.Style({
-        stroke: new ol.style.Stroke({color: 'rgba(35,35,35,1.0)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 0.988}),fill: new ol.style.Fill({color: 'rgba(245,144,83,1.0)'}),
-        text: createTextStyle(feature, resolution, labelText, labelFont,
-                              labelFill, placement, bufferColor,
-                              bufferWidth)
-    })];
-                    break;
-case 'Empresa EJESA':
-                    return [ new ol.style.Style({
-        stroke: new ol.style.Stroke({color: 'rgba(35,35,35,1.0)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 0.988}),fill: new ol.style.Fill({color: 'rgba(253,190,116,1.0)'}),
-        text: createTextStyle(feature, resolution, labelText, labelFont,
-                              labelFill, placement, bufferColor,
-                              bufferWidth)
-    })];
-                    break;
-case 'Espacio Verde':
-                    return [ new ol.style.Style({
-        stroke: new ol.style.Stroke({color: 'rgba(35,35,35,1.0)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 0.988}),fill: new ol.style.Fill({color: 'rgba(254,223,153,1.0)'}),
-        text: createTextStyle(feature, resolution, labelText, labelFont,
-                              labelFill, placement, bufferColor,
-                              bufferWidth)
-    })];
-                    break;
-case 'Iglesia Ntra. Sra. del Valle':
-                    return [ new ol.style.Style({
-        stroke: new ol.style.Stroke({color: 'rgba(35,35,35,1.0)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 0.988}),fill: new ol.style.Fill({color: 'rgba(255,255,191,1.0)'}),
-        text: createTextStyle(feature, resolution, labelText, labelFont,
-                              labelFill, placement, bufferColor,
-                              bufferWidth)
-    })];
-                    break;
-case 'Playón Comparsa':
-                    return [ new ol.style.Style({
-        stroke: new ol.style.Stroke({color: 'rgba(35,35,35,1.0)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 0.988}),fill: new ol.style.Fill({color: 'rgba(221,241,180,1.0)'}),
-        text: createTextStyle(feature, resolution, labelText, labelFont,
-                              labelFill, placement, bufferColor,
-                              bufferWidth)
-    })];
-                    break;
-case 'Plaza 3 de Abril':
-                    return [ new ol.style.Style({
-        stroke: new ol.style.Stroke({color: 'rgba(35,35,35,1.0)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 0.988}),fill: new ol.style.Fill({color: 'rgba(188,228,169,1.0)'}),
-        text: createTextStyle(feature, resolution, labelText, labelFont,
-                              labelFill, placement, bufferColor,
-                              bufferWidth)
-    })];
-                    break;
-case 'Salón Municipal':
-                    return [ new ol.style.Style({
-        stroke: new ol.style.Stroke({color: 'rgba(35,35,35,1.0)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 0.988}),fill: new ol.style.Fill({color: 'rgba(145,203,168,1.0)'}),
-        text: createTextStyle(feature, resolution, labelText, labelFont,
-                              labelFill, placement, bufferColor,
-                              bufferWidth)
-    })];
-                    break;
-case 'Tren Turistico':
-                    return [ new ol.style.Style({
-        stroke: new ol.style.Stroke({color: 'rgba(35,35,35,1.0)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 0.988}),fill: new ol.style.Fill({color: 'rgba(94,167,177,1.0)'}),
-        text: createTextStyle(feature, resolution, labelText, labelFont,
-                              labelFill, placement, bufferColor,
-                              bufferWidth)
-    })];
-                    break;}};
+    var valueStr = (value !== null && value !== undefined) ? value.toString() : 'default';
+    var s = simbolos_Equipamientourbano_11[valueStr] || {forma: 'cuadrado', color: '#555555'};
+    return [
+        // contorno de la parcela, sin relleno, para no tapar las capas de impacto
+        new ol.style.Style({
+            stroke: new ol.style.Stroke({color: s.color, lineDash: [4, 3], width: 1.5})
+        }),
+        // simbolo en un punto interior de la parcela
+        new ol.style.Style({
+            geometry: function(f) {
+                var g = f.getGeometry();
+                if (g.getType() === 'MultiPolygon') return g.getInteriorPoints().getPoint(0);
+                if (g.getType() === 'Polygon') return g.getInteriorPoint();
+                return g;
+            },
+            image: marcador_Equipamientourbano_11(s.forma, s.color),
+            text: createTextStyle(feature, resolution, labelText, labelFont,
+                                  labelFill, placement, bufferColor,
+                                  bufferWidth)
+        })
+    ];
+};
 
 var style_Equipamientourbano_11 = function(feature, resolution){
     var context = {
