@@ -151,7 +151,7 @@ var featureOverlay = new ol.layer.Vector({
 });
 
 var doHighlight = false;
-var doHover = true;
+var doHover = false; // popups solo al hacer clic (evita que el mapa se desplace solo al pasar el cursor)
 
 function createPopupField(currentFeature, currentFeatureKeys, layer) {
     var popupText = '';
