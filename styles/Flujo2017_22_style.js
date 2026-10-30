@@ -3,8 +3,8 @@ var placement = 'point';
 // Flecha de dirección del flujo (evento 2017, interpretación).
 // El grosor y la punta se ajustan a la escala: finos con poco zoom, más gruesos al acercarse.
 var style_Flujo2017_22 = function(feature, resolution){
-    var ancho = Math.min(10, Math.max(2, 16 / Math.sqrt(resolution)));
-    var punta = Math.max(7, ancho * 2.2);
+    var ancho = Math.min(8, Math.max(1.2, 10 / Math.sqrt(resolution)));
+    var punta = Math.max(5, ancho * 2.4);
     var g = feature.getGeometry();
     var c = g.getCoordinates();
     var fin = c[c.length - 1];
