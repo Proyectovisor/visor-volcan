@@ -365,22 +365,6 @@ var lyr_IdejuyPDepuradora_21 = new ol.layer.Vector({
                 interactive: true,
     title: 'Idejuy- P. Depuradora<br />\
     <img src="styles/legend/IdejuyPDepuradora_21_0.png" />   Depuradora<br />' });
-var format_Flujo2017_22 = new ol.format.GeoJSON();
-var features_Flujo2017_22 = format_Flujo2017_22.readFeatures(json_Flujo2017_22, 
-            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_Flujo2017_22 = new ol.source.Vector({
-    attributions: ' ',
-});
-jsonSource_Flujo2017_22.addFeatures(features_Flujo2017_22);
-var lyr_Flujo2017_22 = new ol.layer.Vector({
-                declutter: false,
-                source:jsonSource_Flujo2017_22, 
-                style: style_Flujo2017_22,
-                zIndex: 100,
-                popuplayertitle: 'Dirección del flujo – evento 2017 (interpretación)',
-                interactive: true,
-    title: 'Dirección del flujo – evento 2017<br />\
-    <img src="styles/legend/Flujo2017_22_0.png" />   Recorrido del aluvión (interpretación)<br />' });
 var group_INFRAESTRUCTURA = new ol.layer.Group({
                                 layers: [lyr_Obrasdemitigacin_14,lyr_Ign_vialnacional_15,lyr_IdejuyLineaMT_16,lyr_Lineaferrea_17,lyr_IdejuyTrazaFOptica_18,lyr_IdejuyPPotabilizadora_19,lyr_IdejuyEstaciones_electricas_20,lyr_IdejuyPDepuradora_21,],
                                 fold: 'close',
@@ -390,7 +374,7 @@ var group_MEDIOURBANO = new ol.layer.Group({
                                 fold: 'close',
                                 title: 'MEDIO URBANO'});
 var group_MEDIOFISICO = new ol.layer.Group({
-                                layers: [lyr_IdejuyAPUnesco_2,lyr_Subcuenca_3,lyr_Aluvion2017_4,lyr_Flujo2017_22,lyr_Depositosdetriticos_5,lyr_SigamFallasinversas_6,lyr_Red_hidrografica_7,lyr_LagunaEsmeralda_8,lyr_SigamTiposdePeligros_9,],
+                                layers: [lyr_IdejuyAPUnesco_2,lyr_Subcuenca_3,lyr_Aluvion2017_4,lyr_Depositosdetriticos_5,lyr_SigamFallasinversas_6,lyr_Red_hidrografica_7,lyr_LagunaEsmeralda_8,lyr_SigamTiposdePeligros_9,],
                                 fold: 'close',
                                 title: 'MEDIO FISICO'});
 var group_MAPASBASE = new ol.layer.Group({
@@ -398,7 +382,7 @@ var group_MAPASBASE = new ol.layer.Group({
                                 fold: 'close',
                                 title: 'MAPAS BASE'});
 
-lyr_OpenStreetMap.setVisible(false);lyr_GoogleSatelite_0.setVisible(false);lyr_GoogleMaps_1.setVisible(true);lyr_IdejuyAPUnesco_2.setVisible(false);lyr_Subcuenca_3.setVisible(false);lyr_Aluvion2017_4.setVisible(true);lyr_Depositosdetriticos_5.setVisible(true);lyr_SigamFallasinversas_6.setVisible(false);lyr_Red_hidrografica_7.setVisible(true);lyr_LagunaEsmeralda_8.setVisible(true);lyr_SigamTiposdePeligros_9.setVisible(true);lyr_ParcelasImpactoevento2017_10.setVisible(true);lyr_Equipamientourbano_11.setVisible(false);lyr_IdejuyCentrodeSalud_12.setVisible(true);lyr_IdejuyEstEducativos_13.setVisible(false);lyr_Obrasdemitigacin_14.setVisible(false);lyr_Ign_vialnacional_15.setVisible(true);lyr_IdejuyLineaMT_16.setVisible(false);lyr_Lineaferrea_17.setVisible(false);lyr_IdejuyTrazaFOptica_18.setVisible(false);lyr_IdejuyPPotabilizadora_19.setVisible(false);lyr_IdejuyEstaciones_electricas_20.setVisible(false);lyr_IdejuyPDepuradora_21.setVisible(false);lyr_Flujo2017_22.setVisible(true);
+lyr_OpenStreetMap.setVisible(false);lyr_GoogleSatelite_0.setVisible(false);lyr_GoogleMaps_1.setVisible(true);lyr_IdejuyAPUnesco_2.setVisible(false);lyr_Subcuenca_3.setVisible(false);lyr_Aluvion2017_4.setVisible(true);lyr_Depositosdetriticos_5.setVisible(true);lyr_SigamFallasinversas_6.setVisible(false);lyr_Red_hidrografica_7.setVisible(true);lyr_LagunaEsmeralda_8.setVisible(true);lyr_SigamTiposdePeligros_9.setVisible(true);lyr_ParcelasImpactoevento2017_10.setVisible(true);lyr_Equipamientourbano_11.setVisible(false);lyr_IdejuyCentrodeSalud_12.setVisible(true);lyr_IdejuyEstEducativos_13.setVisible(false);lyr_Obrasdemitigacin_14.setVisible(false);lyr_Ign_vialnacional_15.setVisible(true);lyr_IdejuyLineaMT_16.setVisible(false);lyr_Lineaferrea_17.setVisible(false);lyr_IdejuyTrazaFOptica_18.setVisible(false);lyr_IdejuyPPotabilizadora_19.setVisible(false);lyr_IdejuyEstaciones_electricas_20.setVisible(false);lyr_IdejuyPDepuradora_21.setVisible(false);
 var layersList = [group_MAPASBASE,group_MEDIOFISICO,group_MEDIOURBANO,group_INFRAESTRUCTURA];
 lyr_IdejuyAPUnesco_2.set('fieldAliases', {'ogc_fid': 'ogc_fid', 'nam': 'nam', 'gna': 'gna', 'fna': 'fna', 'ara': 'ara', 'dct': 'dct', 'sag': 'sag', 'Nombre': 'Nombre', });
 lyr_Subcuenca_3.set('fieldAliases', {'GroupID': 'GroupID', 'Nombre': 'Nombre:', 'Fuente': 'Fuente', 'Sag': 'Sag', });
@@ -412,9 +396,6 @@ lyr_ParcelasImpactoevento2017_10.set('fieldAliases', {'id_par_mz': 'id_par_mz', 
 lyr_Equipamientourbano_11.set('fieldAliases', {'id_par_mz': 'id_par_mz', 'zonas_2017': 'zonas_2017', 'manzanas': 'manzanas', 'padron': 'padron', 'usos': 'usos', 'nro_inform': 'nro_inform', 'Impacto': 'Impacto', 'Nombre': 'Nombre', });
 lyr_IdejuyCentrodeSalud_12.set('fieldAliases', {'ogc_fid': 'ogc_fid', 'fna': 'fna', 'gna': 'gna', 'Nombre': 'Nombre', 'sag': 'sag', 'caa': 'caa', 'ies': 'ies', 'ces': 'ces', });
 lyr_IdejuyEstEducativos_13.set('fieldAliases', {'ogc_fid': 'ogc_fid', 'cue': 'cue', 'Nombre': 'Nombre', 'ges': 'ges', 'amg': 'amg', 'sag': 'sag', });
-lyr_Flujo2017_22.set('fieldAliases', {'Tramo': 'Tramo', 'Descripcion': 'Dirección', 'Fuente': 'Fuente', });
-lyr_Flujo2017_22.set('fieldImages', {'Tramo': 'TextEdit', 'Descripcion': 'TextEdit', 'Fuente': 'TextEdit', });
-lyr_Flujo2017_22.set('fieldLabels', {'Tramo': 'inline label - always visible', 'Descripcion': 'inline label - always visible', 'Fuente': 'inline label - always visible', });
 lyr_Obrasdemitigacin_14.set('fieldAliases', {'Ob': 'Ob', 'Obra': 'Obra:', 'Funcion': 'Función:', 'Fuente': 'Fuente', 'Sag': 'Sag', });
 lyr_Ign_vialnacional_15.set('fieldAliases', {'gid': 'gid', 'fdc': 'fdc', 'sag': 'sag', 'id': 'id', 'Ruta': 'Ruta', });
 lyr_IdejuyLineaMT_16.set('fieldAliases', {'ogc_fid': 'ogc_fid', 'subtypecd': 'subtypecd', 'nominalvol': 'nominalvol', 'comments': 'comments', 'tipo': 'tipo', 'fna_nomgeo': 'fna_nomgeo', 'fun_estado': 'fun_estado', 'gna_termge': 'gna_termge', 'nam_termes': 'nam_termes', 'sag_autori': 'sag_autori', 'ten_tensio': 'ten_tensio', 'voltaje': 'voltaje', 'id': 'id', 'visor': 'visor', 'Nombre': 'Nombre', });
