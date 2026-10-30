@@ -24,6 +24,12 @@ var wms_layers = [];
                 url: 'https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}'
             })
         });
+
+        var lyr_OpenStreetMap = new ol.layer.Tile({
+            'title': 'OpenStreetMap',
+            'opacity': 1.000000,
+            source: new ol.source.OSM()
+        });
 var format_IdejuyAPUnesco_2 = new ol.format.GeoJSON();
 var features_IdejuyAPUnesco_2 = format_IdejuyAPUnesco_2.readFeatures(json_IdejuyAPUnesco_2, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
@@ -388,11 +394,11 @@ var group_MEDIOFISICO = new ol.layer.Group({
                                 fold: 'close',
                                 title: 'MEDIO FISICO'});
 var group_MAPASBASE = new ol.layer.Group({
-                                layers: [lyr_GoogleSatelite_0,lyr_GoogleMaps_1,],
+                                layers: [lyr_OpenStreetMap,lyr_GoogleSatelite_0,lyr_GoogleMaps_1,],
                                 fold: 'close',
                                 title: 'MAPAS BASE'});
 
-lyr_GoogleSatelite_0.setVisible(false);lyr_GoogleMaps_1.setVisible(true);lyr_IdejuyAPUnesco_2.setVisible(false);lyr_Subcuenca_3.setVisible(false);lyr_Aluvion2017_4.setVisible(true);lyr_Depositosdetriticos_5.setVisible(true);lyr_SigamFallasinversas_6.setVisible(false);lyr_Red_hidrografica_7.setVisible(true);lyr_LagunaEsmeralda_8.setVisible(true);lyr_SigamTiposdePeligros_9.setVisible(true);lyr_ParcelasImpactoevento2017_10.setVisible(true);lyr_Equipamientourbano_11.setVisible(false);lyr_IdejuyCentrodeSalud_12.setVisible(true);lyr_IdejuyEstEducativos_13.setVisible(false);lyr_Obrasdemitigacin_14.setVisible(false);lyr_Ign_vialnacional_15.setVisible(true);lyr_IdejuyLineaMT_16.setVisible(false);lyr_Lineaferrea_17.setVisible(false);lyr_IdejuyTrazaFOptica_18.setVisible(false);lyr_IdejuyPPotabilizadora_19.setVisible(false);lyr_IdejuyEstaciones_electricas_20.setVisible(false);lyr_IdejuyPDepuradora_21.setVisible(false);lyr_Flujo2017_22.setVisible(true);
+lyr_OpenStreetMap.setVisible(false);lyr_GoogleSatelite_0.setVisible(false);lyr_GoogleMaps_1.setVisible(true);lyr_IdejuyAPUnesco_2.setVisible(false);lyr_Subcuenca_3.setVisible(false);lyr_Aluvion2017_4.setVisible(true);lyr_Depositosdetriticos_5.setVisible(true);lyr_SigamFallasinversas_6.setVisible(false);lyr_Red_hidrografica_7.setVisible(true);lyr_LagunaEsmeralda_8.setVisible(true);lyr_SigamTiposdePeligros_9.setVisible(true);lyr_ParcelasImpactoevento2017_10.setVisible(true);lyr_Equipamientourbano_11.setVisible(false);lyr_IdejuyCentrodeSalud_12.setVisible(true);lyr_IdejuyEstEducativos_13.setVisible(false);lyr_Obrasdemitigacin_14.setVisible(false);lyr_Ign_vialnacional_15.setVisible(true);lyr_IdejuyLineaMT_16.setVisible(false);lyr_Lineaferrea_17.setVisible(false);lyr_IdejuyTrazaFOptica_18.setVisible(false);lyr_IdejuyPPotabilizadora_19.setVisible(false);lyr_IdejuyEstaciones_electricas_20.setVisible(false);lyr_IdejuyPDepuradora_21.setVisible(false);lyr_Flujo2017_22.setVisible(true);
 var layersList = [group_MAPASBASE,group_MEDIOFISICO,group_MEDIOURBANO,group_INFRAESTRUCTURA];
 lyr_IdejuyAPUnesco_2.set('fieldAliases', {'ogc_fid': 'ogc_fid', 'nam': 'nam', 'gna': 'gna', 'fna': 'fna', 'ara': 'ara', 'dct': 'dct', 'sag': 'sag', 'Nombre': 'Nombre', });
 lyr_Subcuenca_3.set('fieldAliases', {'GroupID': 'GroupID', 'Nombre': 'Nombre:', 'Fuente': 'Fuente', 'Sag': 'Sag', });
