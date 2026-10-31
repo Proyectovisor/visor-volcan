@@ -359,6 +359,12 @@ function onSingleClickFeatures(evt) {
     if (doHover || sketch) {
         return;
     }
+    // Si la ficha está abierta, un clic en el mapa la cierra
+    if (container.style.display === 'block') {
+        popupContent = '';
+        updatePopup();
+        return;
+    }
     if (!featuresPopupActive) {
         featuresPopupActive = true;
     }
@@ -486,6 +492,12 @@ function onSingleClickWMS(evt) {
     }
 }
 
+// Un clic sobre la ficha también la cierra
+container.addEventListener('click', function(e) {
+    if (e.target === closer) { return; }
+    popupContent = '';
+    updatePopup();
+});
 map.on('singleclick', onSingleClickFeatures);
 map.on('singleclick', onSingleClickWMS);
 
